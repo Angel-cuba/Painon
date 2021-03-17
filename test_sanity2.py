@@ -25,11 +25,11 @@ def test_liukuluku():
 
 # Syötteenä liukuluku, jossa desimaalipiste 
 def test_liukuluku_liukuluku():
-    assert sanity2.liukuluvuksi('15.0') == [0, 'Syöte OK', 15.0]
+    assert sanity2.liukuluvuksi('15.0') == [0, 'Syöte OK', 0]
 
 # Syötteenä liukuluku, jossa desimaalipilkku: automaattinen korjaus
 def test_liukuluku_liukuluku():
-    assert sanity2.liukuluvuksi('15,0') == [0, 'Syöte OK', 15.0]
+    assert sanity2.liukuluvuksi('15,0') == [0, 'Syöte OK', 0]
 
 # Syötteenä liukuluku, jossa useampi desimaalipiste: virhe
 def test_liukuluku_monta_pistetta():
@@ -41,12 +41,12 @@ def test_liukuluku_monta_pilkkua():
 
 # Syötteenä mukana kirjaimia lopussa: virhe
 def test_liukuluku_kirjaimia_lopussa():
-    assert sanity2.liukuluvuksi('15.0 kg') == [0, 'Syöte OK', 15.0]
+    assert sanity2.liukuluvuksi('15.0 kg') == [4, 'Desimaalierottimen jälkeen ylimääräisiä merkkejä: vain numerot ja desimaalipiste on sallittu', 0]
 
 # Syötteenä mukana kirjaimia alussa: virhe
 def test_liukuluku_kirjaimia_alussa():
-    assert sanity2.liukuluvuksi('paino 15.0') == [0, 'Syöte OK', 15.0]
+    assert sanity2.liukuluvuksi('paino 15.0') == [3, 'Ennen desimaalierotinta ylimääräisiä merkkejä: vain numerot ja desimaalipiste on sallittu', 0]
 
 # Syötteenä pelkää tekstiä, ei numeroita: virhe
 def test_liukuluku_tekstia():
-    assert sanity2.liukuluvuksi('sata') == [0, 'Syöte OK', 15.0]
+    assert sanity2.liukuluvuksi('sata') == [2, 'Syötteessä ylimäärisiä merkkejä: vain numerot ja desimaalipiste tai pilkku on sallittu', 0]
