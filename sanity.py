@@ -1,4 +1,6 @@
 # Moduli syötteen oikeellisuuden (sanity) tarkistamiseen
+# FIXME: Tämä moduli on vanhentunut. Korvattu modulilla sanity2.py. Poista seuraavasta julkaisusta!
+
 """Tarkistaa käyttäjän syötteen oikeellisuuden tarkistusfunktioiden avulla
 """
 
@@ -9,13 +11,10 @@ def on_jarkeva(syote, alaraja, ylaraja):
     Puhdistaa merkkijonosta ylimääräiset tulostumattomat merkit ja välilyönnit
     sekä selvittää onko syötetty arvo annettujen rajojen sisällä. 
     Funktio muutta desimaali pilkun desimaalipisteeksi.
-
-
     Args:
         syote (string): Näppäimistöltä syötetty arvo
         alarja (float): pienin sallittu arvo
         ylaraja (float): suurin sallittu arvo
-
     Returns (float) : Käyttäjän syöttämä arvo numeerisena
     """
 
@@ -64,7 +63,6 @@ def liukuluku_ok(syote, alaraja, ylaraja):
         syote (string): Syötteenä saatu arvo
         alaraja (float): pienin hyväksyttävä arvo
         ylaraja (float): suurin hyväksyttävä arvo
-
     Returns:
         list: Palauttaa arvon (float), virhekoodin (int), virhesanoman (string)
     """

@@ -2,10 +2,8 @@
 
 def liukuluvuksi(syote):
     """Tarkistaa syötteen ja muuttaa sen liukuluvuksi
-
     Args:
         syote (string): Käyttäjän syöttämä arvo
-
     Returns:
         list: virhekoodi, virhesanoma ja syöte liukulukuna
     """
@@ -56,7 +54,7 @@ def liukuluvuksi(syote):
         arvo = float(syote)
     else:
         virhekoodi = 2
-        virhesanoma = 'Syötteessä ylimäärisiä merkkejä: vain numerot ja desimaalipiste on sallittu'   
+        virhesanoma = 'Syötteessä ylimäärisiä merkkejä: vain numerot ja desimaalipiste tai pilkku on sallittu'   
     
     # Muodostetaan funktion paluuarvo ja palautetaan se
     paluuarvo = [virhekoodi, virhesanoma, arvo]
@@ -66,12 +64,10 @@ def liukuluvuksi(syote):
 # Funktio, jolla tarkistetaan, että syötetty arvo on haluttujen rajojen sisällä
 def rajatarkistus(arvo, alaraja, ylaraja):
     """Tarkistaa, että syötetty arvo on suurempi tai yhtäsuuri kuin alaraja ja pienempi tai yhtäsuuri kuin yläraja
-
     Args:
         arvo (float): tarkistettava arvo
         alaraja (float): pienin sallittu arvo
         ylaraja (float): suurin sallittu arvo
-
     Returns:
         list: virhekoodi, virheilmoitus
     """
@@ -137,4 +133,3 @@ if __name__ == '__main__':
     # 3. Yli ylärajan
     arvo = 3.8
     print('Arvo:', arvo, 'Tulokset:', rajatarkistus(arvo, alaraja, ylaraja))
-    
