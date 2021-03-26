@@ -1,60 +1,64 @@
-# Tässä modulissa määritellän luokat painonhallintasovellukseen
-
+# Tässä modulissa määritellään luokat painonhallintasovellukseen
 
 # Modulien ja kirjastojen lataukset
 
 
-
-# Henkilö-luokka    
+# Henkilö-luokka
 
 class Henkilo:
     """Yliluokka kaikille henkilötyypeille"""
     def __init__(self, etunimi, sukunimi, pituus, paino, ika, sukupuoli):
-
+        
         self.etunimi = etunimi
         self.sukunimi = sukunimi
         self.pituus = pituus
-        self.paino =paino
+        self.paino = paino
         self.ika = ika
         self.sukupuoli = sukupuoli
 
     def painoindeksi(self):
         bmi = self.paino / (self.pituus / 100) ** 2
-        # print('Painoindeksi on', bmi)
         return bmi
 
-    
+    @staticmethod
     def bmi(pituus, paino):
-        bmi = paino / (pituus/ 100)**2
+        bmi = paino / (pituus/100)**2
         return bmi
 
-   
 class Aikuinen(Henkilo):
-    """Aliluokka aikuiselle henkilölle, perii Henkilo-luokan ominaisuudet ja metodit"""
+    """Aliluokka aikuiselle henkilölle, perii Henkilo-luokan ominaisuudet
+    ja metodit
+    """
     def __init__(self, etunimi, sukunimi, pituus, paino, ika, sukupuoli, tavoitepaino):
         super().__init__(etunimi, sukunimi, pituus, paino, ika, sukupuoli)
         self.tavoitepaino = tavoitepaino
-        
 
     def rasvaprosentti(self):
-        # bmi = self.paino / (self.pituus / 100) ** 2
-        rasvaprosentti = 1.2 * self.painoindeksi() + 0.23 * self.ika -10.8 * self.sukupuoli - 5.4
+        rasvaprosentti = 1.2 * self.painoindeksi() + 0.23 * self.ika - 10.8 * self.sukupuoli - 5.4
         return rasvaprosentti
-    
-    
+# Tehtävä 1
+class Lapsi(Henkilo):
+    """Henkilöluokan aliluokka lapsille."""
+    def __init__(self, etunimi, sukunimi, pituus, paino, ika, sukupuoli):
+        super().__init__(etunimi, sukunimi, pituus, paino, ika, sukupuoli)
+        
+    def rasvaprosentti(self):
+        rasvaprosentti = 1.51 * self.painoindeksi() - 0.70 * self.ika - 3.6 * self.sukupuoli + 1.4
+        return rasvaprosentti    
 
-if __name__ == '__main__':
-    angel = Henkilo('Angel', 'Araoz', 177, 100, 36, 1)
-    print('Henkilö painaa', angel.paino)
 
-    angel.painoindeksi()
+if __name__ == "__main__":
+    mikaV = Henkilo('Mika', 'Vainio', 171, 74, 59, 1)
+    print('Henkilö painaa', mikaV.paino)
 
-    angel2 = Aikuinen('Angel', 'Araoz', 177, 100, 36, 1, 97)
-    print(angel2.etunimi, 'painoindeksi', angel2.painoindeksi())
-    print(angel2.etunimi,'rasvaprosentti',angel2.rasvaprosentti())
+    mikaV.painoindeksi()
 
-    # Lasketaan painoindeksi staattisella metodoilla
-    pituus = 177
+    mikaV2 = Aikuinen('Mika', 'Vainio', 171, 74, 59, 1, 70)
+    print(mikaV2.etunimi, 'painoindeksi', mikaV2.painoindeksi())
+    print(mikaV2.etunimi, 'rasvaprosentti', mikaV2.rasvaprosentti())
+
+    # Lasketaan painoindeksi staattisella metodilla
+    pituus = 171
     paino = 75
 
-    print('Painoindeksi on:', Henkilo.bmi(pituus, paino))
+    print('Paino indeksi on ', Henkilo.bmi(pituus, paino))

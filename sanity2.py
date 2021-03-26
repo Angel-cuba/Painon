@@ -90,6 +90,8 @@ def rajatarkistus(arvo, alaraja, ylaraja):
     paluuarvo = [virhekoodi, virhesanoma]
     return paluuarvo
 
+# TODO: Tähän funktio, jolla tarkistetaan, että syöte on tekstiä
+
 # Funktioiden testaus
 if __name__ == '__main__':
     
