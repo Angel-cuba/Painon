@@ -22,3 +22,18 @@ desimaaliosa = str(osat[1])
 # Tarkistetaan ovatko merkkijonojen kirjaimet numeroita
 print('Kokonaisosa numeerinen', kokonaisosa.isnumeric())
 print('Desimaaliosa numeerinen', desimaaliosa.isnumeric())
+
+def kysy_henkilotiedot():
+    nimi = input('Nimi: ')
+    henkilotiedot = nimi.title()
+    return henkilotiedot
+
+def totemus():
+    print('Kyllä se siitä, herra Angel')
+
+if __name__ == '__main__':
+
+    henkilotiedot = kysy_henkilotiedot()
+    print(henkilotiedot)
+
+    totemus()

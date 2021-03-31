@@ -1,0 +1,3 @@
+# Tässä teidostossa on painoindeksitietojaEtunimi; Sukunimi; Pituus; Paino
+Angel;Araoz;177;101
+Vera;Kapanen;160;70
