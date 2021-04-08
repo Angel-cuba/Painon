@@ -24,24 +24,33 @@ def luo_taulut(tietokanta):
 
     # Luodaan Henkilö
     yhteys.execute('''CREATE TABLE henkilo(
-                                henkilo_id INTEGER PRIMARY KEY NOT NULL, 
+                                henkilo_id INTEGER NOT NULL, 
                                 etunimi TEXT NOT NULL,
                                 sukunimi TEXT NOT NULL,
                                 sukupuoli INTEGER NOT NULL,
-                                spaiva DATE NOT NULL)
+                                spaiva DATE NOT NULL,
+                                PRIMARY KEY("henkilo_id" AUTOINCREMENT)
+                                )
                             ''') 
             # Luodaan Mittaukset -taulu
     yhteys.execute('''CREATE TABLE mittaus(
-                                mittaus_id INTEGER PRIMARY KEY, 
+                                mittaus_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
                                 henkilo_id INTEGER NOT NULL, 
                                 pituus REAL NOT NULL, 
-                                paino REAL NOT NULL)  
+                                paino REAL NOT NULL,
+                                FOREIGN KEY (henkilo_id)
+                                 REFERENCES henkilo (henkilo_id)
+                                 ON DELETE CASCADE);  
                             ''')
     # Suljetaan tietokantayhteys taulujen luonnin jälkeen
     yhteys.close()      
 
 # Luodaan testidataa
+def lisaa_henkilo(tiedosto, etunimi, sukunimi, spaiva, sukupuoli):
+    yhteys = sqlite3.connect(tiedosto)
 
+    yhteys.execute("INSERT INTO henkilo (etunimi, sukunimi, sukupuoli, spaiva)  VALUES (etunimi, sukunimi, sukupuoli, spaiva) ")       
+    
 
 #  Paikallisen testaus
 if __name__ == '__main__':
