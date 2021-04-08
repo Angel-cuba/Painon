@@ -46,15 +46,28 @@ def luo_taulut(tietokanta):
     yhteys.close()      
 
 # Luodaan testidataa
-def lisaa_henkilo(tiedosto, etunimi, sukunimi, spaiva, sukupuoli):
+def lisaa_henkilo(tiedosto, etunimi, sukunimi,sukupuoli, spaiva):
+    # Rakennetaan SQL-lause argumenttien arvoista
+
+    sql_lause = "INSERT INTO henkilo (etunimi, sukunimi, sukupuoli, spaiva) VALUES (" + "'" + etunimi + "'," + "'" + sukunimi + "', " + sukupuoli + ","+ "'" + spaiva +"' );"
+
+
     yhteys = sqlite3.connect(tiedosto)
 
-    yhteys.execute("INSERT INTO henkilo (etunimi, sukunimi, sukupuoli, spaiva)  VALUES (etunimi, sukunimi, sukupuoli, spaiva) ")       
+    yhteys.execute();      
     
 
 #  Paikallisen testaus
 if __name__ == '__main__':
     # pass
    # luo_taulut()
-   luo_tietokanta(tietokanta)
-   luo_taulut(tietokanta)
+   #luo_tietokanta(tietokanta)
+   #luo_taulut(tietokanta)
+   etunimi = 'Mikko'
+   sukunimi = 'Viljaninen'
+   sukupuoli = 1
+   spaiva = '1968-12-03'
+   sql_lause = "INSERT INTO henkilo (etunimi, sukunimi, sukupuoli, spaiva) VALUES (" + "'" + etunimi + "'," + "'" + sukunimi + "', " + sukupuoli + ","+ "'" + spaiva +"' );"
+  
+  #  sql_lause = "INSERT INTO henkilo (etunimi, sukunimi, sukupuoli, spaiva) VALUES ('Angel','Araoz', 1 , '1984-12-03');"
+
