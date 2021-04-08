@@ -16,7 +16,7 @@ def luo_tietokanta(tiedosto):
     yhteys.close()
 
 
-def luo_taulut():
+def luo_taulut(tietokanta):
     """Luo SQL Lite tietokantaan tarvittavat taulut
     """  
 
@@ -37,8 +37,9 @@ def luo_taulut():
                                 pituus REAL NOT NULL, 
                                 paino REAL NOT NULL)  
                             ''')
-    yhteys.close()      # Luodaan Henkilö-taulu
-           
+    # Suljetaan tietokantayhteys taulujen luonnin jälkeen
+    yhteys.close()      
+
 # Luodaan testidataa
 
 
@@ -47,3 +48,4 @@ if __name__ == '__main__':
     # pass
    # luo_taulut()
    luo_tietokanta(tietokanta)
+   luo_taulut(tietokanta)
